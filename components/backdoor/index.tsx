@@ -70,6 +70,11 @@ export default function BackDoor() {
   }
 
   useEffect(() => {
+    window.addEventListener("storage", (ev) => {
+      if(ev.key === 'parts') {
+        setData(ev.newValue)
+      }
+    })
     setData(localStorage.getItem('parts'))
   }, [])
 
